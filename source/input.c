@@ -3294,7 +3294,7 @@ int input_read_parameters_species(struct file_content * pfc,
       else if ((strstr(string1,"EDE") != NULL) || (strstr(string1,"ede") != NULL)) {
         pba->fluid_equation_of_state = EDE;
       }
-      if ((strstr(string1,"QDE") != NULL) || (strstr(string1,"qde") != NULL)) {
+      else if ((strstr(string1,"QDE") != NULL) || (strstr(string1,"qde") != NULL)) {
         pba->fluid_equation_of_state = QDE;
       }
       else {

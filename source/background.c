@@ -703,7 +703,7 @@ int background_w_fld(
     *w_fld = - dOmega_ede_over_da*a/Omega_ede/3./(1.-Omega_ede)+a_eq/3./(a+a_eq);
     break;
     case QDE:
-    *w_fld = -1. + pba->wa_fld + pow(a,-pba->w0_fld);
+    *w_fld = -1. + pba->wa_fld*pow(a,-pba->w0_fld);
     break;
   }
 

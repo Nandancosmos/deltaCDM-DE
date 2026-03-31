@@ -703,7 +703,7 @@ int background_w_fld(
     *w_fld = - dOmega_ede_over_da*a/Omega_ede/3./(1.-Omega_ede)+a_eq/3./(a+a_eq);
     break;
     case QDE:
-    *w_fld = -1. + pba->w0_fld + pow(a,-pba->wa_fld);
+    *w_fld = -1. + pba->wa_fld + pow(a,-pba->w0_fld);
     break;
   }
 
@@ -725,7 +725,7 @@ int background_w_fld(
       + a_eq/3./(a+a_eq)/(a+a_eq);
     break;
   case QDE:
-    *dw_over_da_fld = - pba->wa_fld * pow(a,-pba->wa_fld -1.);
+    *dw_over_da_fld = - pba->wa_fld * pba->w0_fld*pow(a,-pba->w0_fld -1.);
     break;
 
   }
@@ -748,7 +748,7 @@ int background_w_fld(
     class_stop(pba->error_message,"EDE implementation not finished: to finish it, read the comments in background.c just before this line\n");
     break;
   case QDE:
-    *integral_fld = -3.*pba->w0_fld*log(a) - 3.*(1-pow(a,-pba->wa_fld))/pba->wa_fld ;
+    *integral_fld = -3.*pba->wa_fld/pba->w0_fld + 3.*(pba->wa_fld/pba->w0_fld)*(pow(a,-pba->w0_fld));
     break;
   }
 
